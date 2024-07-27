@@ -3,8 +3,11 @@ To Do List using html,css,javascript.
 
 #Tech Stack
 
-HTML: Used for structuring the content of the website.
 
-Css: Applied for styling and Layout.
+HTML: Sets up the structure of the to-do list.
 
-JavaScript: Used for dynamic.
+
+CSS: Styles the list with a clean, modern look.
+
+
+JavaScript​: Adds interactivity, allowing users to add, edit, and delete new tasks dynamically.
