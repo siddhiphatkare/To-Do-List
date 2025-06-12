@@ -1,0 +1,1142 @@
+/* Enhanced UI Styles */
+:root {
+    --primary: #8BC34A;
+    --business: #2196F3;
+    --personal: #FF9800;
+    --light: #F5F5F5;
+    --lighter: #FFFFFF;
+    --grey: #9E9E9E;
+    --dark: #212121;
+    --danger: #F44336;
+    --border-dark: #E0E0E0;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --business-glow: 0 0 10px rgba(33, 150, 243, 0.3);
+    --personal-glow: 0 0 10px rgba(255, 152, 0, 0.3);
+    --pattern-color: rgba(139, 195, 74, 0.1);
+    --transition-speed: 0.3s;
+    --dark-bg: #121212;
+    --dark-surface: #1E1E1E;
+    --success: #4CAF50;
+    --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Container and Layout */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 4rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Main content area */
+.main {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2.5rem;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 1.5rem;
+    box-shadow: var(--card-shadow);
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--lighter);
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-brand {
+    display: flex;
+    flex-direction: column;
+}
+
+.app-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.app-tagline {
+    font-size: 0.875rem;
+    color: var(--grey);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.nav-links a {
+    color: var(--dark);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: var(--primary);
+    color: white;
+}
+
+.theme-toggle {
+    background: var(--light);
+    border: 2px solid var(--primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    margin: 0 0.5rem;
+    position: relative;
+    top: 0;
+}
+
+.theme-toggle:hover {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    color: var(--dark);
+}
+
+body.dark-mode .theme-toggle {
+    background: var(--primary);
+    border-color: var(--light);
+}
+
+body.dark-mode .theme-toggle svg {
+    color: white;
+}
+
+.sun-icon {
+    display: none;
+}
+
+body.dark-mode .moon-icon {
+    display: none;
+}
+
+body.dark-mode .sun-icon {
+    display: block;
+}
+
+/* Dark mode navbar styles */
+body.dark-mode .navbar {
+    background: var(--dark-surface);
+    border: 1px solid var(--border-dark);
+}
+
+body.dark-mode .nav-links a {
+    color: var(--light);
+}
+
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-links a.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Sections */
+section {
+    background: var(--lighter);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform var(--transition-speed) var(--animation-timing);
+}
+
+section:hover {
+    transform: translateY(-2px);
+}
+
+/* Headings */
+h2, h3, h4 {
+    color: var(--dark);
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 2rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="datetime-local"] {
+    width: 100%;
+    padding: 1.25rem;
+    font-size: 1.25rem;
+    border: 2px solid var(--border-dark);
+    border-radius: 1rem;
+    background: var(--lighter);
+    transition: all var(--transition-speed) var(--animation-timing);
+}
+
+input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(139, 195, 74, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Buttons */
+button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-speed) var(--animation-timing);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.auth-button {
+    background: var(--primary);
+    color: var(--lighter);
+    width: 100%;
+}
+
+/* Todo Items */
+.todo-item {
+    background: var(--lighter);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    box-shadow: var(--shadow);
+    transition: all var(--transition-speed) var(--animation-timing);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.todo-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Statistics Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--lighter);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light);
+    border-radius: 1rem;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-content h4 {
+    font-size: 1.1rem;
+    color: var(--grey);
+    margin-bottom: 0.5rem;
+}
+
+.stat-content p {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+/* Progress Bars */
+.progress {
+    width: 100%;
+    height: 8px;
+    background: var(--lighter);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    transition: width 0.5s ease;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background: var(--dark-bg);
+    color: var(--light);
+}
+
+body.dark-mode .main,
+body.dark-mode section,
+body.dark-mode .navbar,
+body.dark-mode .stat-card,
+body.dark-mode .todo-item {
+    background: var(--dark-surface);
+    color: var(--light);
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="password"],
+body.dark-mode input[type="datetime-local"] {
+    background: var(--dark-bg);
+    color: var(--light);
+    border-color: var(--border-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .achievements-section {
+        grid-column: span 1;
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 1.5rem;
+    }
+
+    .welcome-section {
+        padding: 2rem;
+    }
+
+    .welcome-section .title {
+        font-size: 2rem;
+    }
+
+    .achievement-card,
+    .challenge-card {
+        padding: 1.5rem;
+    }
+
+    .tips-carousel {
+        height: 300px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.todo-item,
+.stat-card,
+section {
+    animation: fadeIn 0.5s var(--animation-timing);
+}
+
+/* Loading Indicator */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading::after {
+    content: '';
+    width: 60px;
+    height: 60px;
+    border: 6px solid var(--light);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Password Input Styles */
+.password-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input input {
+    padding-right: 3rem;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--grey);
+    transition: color var(--transition-speed) var(--animation-timing);
+}
+
+.toggle-password:hover {
+    color: var(--dark);
+}
+
+.eye-icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* Auth Container */
+.auth-container {
+    max-width: 500px;
+    width: 90%;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: var(--lighter);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.auth-container h1 {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.auth-container h2 {
+    font-size: 1.5rem;
+    color: var(--grey);
+    margin-bottom: 2rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.form-group input {
+    padding: 1.25rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--light);
+    border-radius: 0.75rem;
+    background: var(--lighter);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.2);
+}
+
+/* Password Requirements */
+.password-requirements {
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--light);
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.password-hint {
+    color: var(--grey);
+    font-size: 0.875rem;
+    display: block;
+    text-align: center;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .password-requirements {
+    background: var(--dark-surface);
+}
+
+body.dark-mode .password-hint {
+    color: var(--light);
+}
+
+/* Auth Header Styles */
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+    font-size: 1.125rem;
+    color: var(--grey);
+    font-weight: 500;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .auth-subtitle {
+    color: var(--light);
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    max-width: 1400px;
+    margin: 80px auto 2rem;
+    padding: 0 2rem;
+}
+
+/* Welcome Section */
+.welcome-section {
+    background: var(--primary);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.welcome-section .title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-section .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+/* Achievements Section */
+.achievements-section {
+    grid-column: span 2;
+    background: var(--lighter);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.achievement-card {
+    position: relative;
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.achievement-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.status-badge {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.status-badge.locked {
+    opacity: 0.5;
+}
+
+.status-badge.unlocked {
+    animation: unlockAchievement 0.5s var(--animation-timing);
+}
+
+.achievement-icon {
+    font-size: 2.5rem;
+    margin: 0 auto;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--lighter);
+    border-radius: 1rem;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.achievement-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.achievement-info h4 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--dark);
+}
+
+.achievement-info p {
+    color: var(--grey);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.achievement-progress {
+    margin-top: auto;
+}
+
+.achievement-progress .progress {
+    width: 100%;
+    height: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-progress .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.achievement-progress .progress-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--grey);
+}
+
+.achievement-progress .percentage {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Achievement unlock animation */
+@keyframes unlockAchievement {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Achievement card states */
+.achievement-card.unlocked {
+    border-color: var(--primary);
+    background: linear-gradient(45deg, var(--lighter) 0%, var(--pattern-color) 100%);
+}
+
+.achievement-card.unlocked .achievement-icon {
+    transform: scale(1.1);
+    background: var(--primary);
+    color: white;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .achievement-card {
+    background: var(--dark-surface);
+}
+
+body.dark-mode .achievement-info h4 {
+    color: var(--light);
+}
+
+body.dark-mode .achievement-info p {
+    color: var(--grey);
+}
+
+body.dark-mode .achievement-progress .progress {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .achievement-icon {
+    background: var(--dark-bg);
+}
+
+body.dark-mode .achievement-card.unlocked {
+    background: linear-gradient(45deg, var(--dark-surface) 0%, rgba(99, 102, 241, 0.1) 100%);
+}
+
+/* Daily Challenge */
+.daily-challenge {
+    background: var(--lighter);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.challenge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.challenge-timer {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.challenge-card {
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.challenge-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.challenge-content p {
+    color: var(--grey);
+    margin-bottom: 1.5rem;
+}
+
+/* Reward Styles */
+.reward-info {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--lighter);
+}
+
+.reward-info h5 {
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.rewards-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.rewards-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    background: var(--lighter);
+    border-radius: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.rewards-list li:hover {
+    transform: translateX(5px);
+}
+
+.reward-icon {
+    font-size: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reward-text {
+    font-size: 0.95rem;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.claim-reward {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.claim-reward:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.claim-reward:disabled {
+    background: var(--grey);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .challenge-card {
+    background: var(--dark-surface);
+}
+
+body.dark-mode .challenge-content h4,
+body.dark-mode .reward-info h5,
+body.dark-mode .reward-text {
+    color: var(--light);
+}
+
+body.dark-mode .rewards-list li {
+    background: var(--dark-bg);
+}
+
+body.dark-mode .reward-info {
+    border-top-color: var(--dark-bg);
+}
+
+/* Productivity Tips */
+.productivity-tips {
+    background: var(--lighter);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.tips-carousel {
+    position: relative;
+    background: var(--light);
+    border-radius: 1rem;
+    height: 200px;
+    margin-top: 1.5rem;
+    overflow: hidden;
+}
+
+.carousel-content {
+    height: 100%;
+    width: 100%;
+    padding: 1rem 3rem;
+}
+
+.tip-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 2rem 3rem;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.tip-card.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.tip-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--dark);
+}
+
+.tip-card p {
+    color: var(--grey);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 500px;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5rem;
+    pointer-events: none;
+}
+
+.nav-button {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--lighter);
+    border: 1px solid var(--border-dark);
+    color: var(--grey);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+    margin: 0 0.25rem;
+}
+
+.nav-button:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Dark mode adjustments */
+body.dark-mode .tips-carousel {
+    background: var(--dark-surface);
+}
+
+body.dark-mode .tip-card h4 {
+    color: var(--light);
+}
+
+body.dark-mode .tip-card p {
+    color: var(--grey);
+}
+
+body.dark-mode .nav-button {
+    background: var(--dark-surface);
+    border-color: var(--border-dark);
+    color: var(--grey);
+}
+
+body.dark-mode .nav-button:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--grey);
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    opacity: 1;
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+/* Dark Mode */
+body.dark-mode .navbar,
+body.dark-mode .stat-card,
+body.dark-mode .achievements-section,
+body.dark-mode .daily-challenge,
+body.dark-mode .productivity-tips {
+    background: var(--dark-surface);
+    color: var(--light);
+}
+
+body.dark-mode .achievement-card,
+body.dark-mode .challenge-card,
+body.dark-mode .tips-carousel {
+    background: var(--dark-bg);
+}
+
+body.dark-mode .stat-content h4,
+body.dark-mode .achievement-card p,
+body.dark-mode .challenge-content p,
+body.dark-mode .tip-card p {
+    color: var(--light);
+    opacity: 0.8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat-card,
+.achievement-card,
+.challenge-card {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--light);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.3s ease;
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    background: var(--primary);
+    color: white;
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+body.dark-mode .todo-item {
+    background: var(--dark-surface);
+    color: var(--light);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background: rgba(18, 18, 18, 0.8);
+} 

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - TaskFlow</title>
+    <link rel="stylesheet" href="../main.css" />
+    <link rel="stylesheet" href="../auth.css" />
+    <link rel="stylesheet" href="../enhanced.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        // Apply dark mode class early on page load
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.documentElement.classList.add('dark-mode');
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="app-name">TaskFlow</span>
+            <span class="app-tagline">Your Smart Todo List Manager</span>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="../index.html">Todo</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM12 4c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8z"/>
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.1 22c-5.52 0-10-4.48-10-10s4.48-10 10-10c1.25 0 2.42.23 3.53.64.12.05.2.17.2.3v1.5c0 .17-.11.32-.27.38-1.02.38-1.93 1.01-2.66 1.83-.1.12-.26.17-.41.17h-1.5c-.17 0-.32-.11-.38-.27-.38-1.02-1.01-1.93-1.83-2.66-.12-.1-.17-.26-.17-.41v-1.5c0-.13.08-.25.2-.3 1.11-.41 2.28-.64 3.53-.64 5.52 0 10 4.48 10 10s-4.48 10-10 10z"/>
+                </svg>
+            </button>
+            <a href="#" id="logout-btn">Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-content">
+                <h2 class="title">Welcome back, <span class="user-name">User</span></h2>
+                <p class="subtitle">Here's your productivity overview</p>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon productivity-icon">📊</div>
+                <div class="stat-content">
+                    <h4>Productivity Score</h4>
+                    <p id="productivity-score">0%</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon completed-icon">✅</div>
+                <div class="stat-content">
+                    <h4>Completed Today</h4>
+                    <p id="completed-today">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon streak-icon">🔥</div>
+                <div class="stat-content">
+                    <h4>Current Streak</h4>
+                    <div id="current-streak">
+                        <div class="streak-info">
+                            <span class="streak-count">0</span>
+                            <span class="streak-label">days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Achievements Section -->
+            <section class="achievements-section">
+                <h3>Your Achievements</h3>
+                <div class="achievements-grid">
+                    <div class="achievement-card" data-achievement="early-bird">
+                        <div class="achievement-status">
+                            <span class="status-badge locked">🔒</span>
+                            <span class="status-badge unlocked" style="display: none;">🏆</span>
+                        </div>
+                        <div class="achievement-icon">🌅</div>
+                        <div class="achievement-info">
+                            <h4>Early Bird</h4>
+                            <p>Complete 5 tasks before 9 AM</p>
+                            <div class="achievement-progress">
+                                <div class="progress">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div class="progress-text">
+                                    <span class="current">0</span>/<span class="total">5</span>
+                                    <span class="percentage">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement-card" data-achievement="streak-master">
+                        <div class="achievement-status">
+                            <span class="status-badge locked">🔒</span>
+                            <span class="status-badge unlocked" style="display: none;">🏆</span>
+                        </div>
+                        <div class="achievement-icon">🔥</div>
+                        <div class="achievement-info">
+                            <h4>Streak Master</h4>
+                            <p>Maintain a 7-day streak</p>
+                            <div class="achievement-progress">
+                                <div class="progress">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div class="progress-text">
+                                    <span class="current">0</span>/<span class="total">7</span>
+                                    <span class="percentage">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement-card" data-achievement="task-crusher">
+                        <div class="achievement-status">
+                            <span class="status-badge locked">🔒</span>
+                            <span class="status-badge unlocked" style="display: none;">🏆</span>
+                        </div>
+                        <div class="achievement-icon">💪</div>
+                        <div class="achievement-info">
+                            <h4>Task Crusher</h4>
+                            <p>Complete 50 tasks total</p>
+                            <div class="achievement-progress">
+                                <div class="progress">
+                                    <div class="progress-fill"></div>
+                                </div>
+                                <div class="progress-text">
+                                    <span class="current">0</span>/<span class="total">50</span>
+                                    <span class="percentage">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Daily Challenge -->
+            <section class="daily-challenge">
+                <div class="challenge-header">
+                    <h3>Daily Health Challenge</h3>
+                    <div class="challenge-timer" id="challenge-timer">23:59:59</div>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-content">
+                        <h4>Wellness Warrior</h4>
+                        <p>Complete these 3 health tasks today:</p>
+                        <ul style="list-style: none; padding: 0; margin: 1rem 0;">
+                            <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <span style="color: var(--primary);">💧</span> Drink 8 glasses of water
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <span style="color: var(--primary);">🧼</span> Practice proper hand hygiene
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="color: var(--primary);">🏃</span> Take a 15-minute walk
+                            </li>
+                        </ul>
+                        <div class="progress">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                        <div class="reward-info">
+                            <h5>Rewards:</h5>
+                            <ul class="rewards-list">
+                                <li>
+                                    <span class="reward-icon">💪</span>
+                                    <span class="reward-text">Health Champion Badge</span>
+                                </li>
+                                <li>
+                                    <span class="reward-icon">⭐</span>
+                                    <span class="reward-text">50 Wellness Points</span>
+                                </li>
+                                <li>
+                                    <span class="reward-icon">🌟</span>
+                                    <span class="reward-text">Wellness Streak Bonus</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="claim-reward" disabled>Claim Reward</button>
+                </div>
+            </section>
+
+            <!-- Productivity Tips -->
+            <section class="productivity-tips">
+                <h3>Productivity Tips</h3>
+                <div class="tips-carousel">
+                    <div class="carousel-nav">
+                        <button class="nav-button prev" aria-label="Previous tip">←</button>
+                        <button class="nav-button next" aria-label="Next tip">→</button>
+                    </div>
+                    <div class="carousel-content">
+                        <div class="tip-card active">
+                            <h4>Time Blocking</h4>
+                            <p>Schedule specific time blocks for different types of tasks to maintain focus and improve productivity.</p>
+                        </div>
+                        <div class="tip-card">
+                            <h4>Pomodoro Technique</h4>
+                            <p>Work for 25 minutes, then take a 5-minute break. This helps maintain high energy and concentration levels.</p>
+                        </div>
+                        <div class="tip-card">
+                            <h4>Prioritize Tasks</h4>
+                            <p>Use the Eisenhower Matrix to organize tasks based on urgency and importance for better time management.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="../auth.js"></script>
+    <script src="../main.js"></script>
+    <script src="../dashboard.js"></script>
+</body>
+</html> 

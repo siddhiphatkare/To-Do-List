@@ -1,0 +1,119 @@
+/* Progress Bars */
+.progress {
+    width: 100%;
+    height: 8px;
+    background: var(--lighter);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-progress .progress {
+    width: 100%;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.achievement-progress .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: 12px;
+    transition: width 0.5s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .achievement-progress .progress {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.achievement-progress .progress-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--grey);
+    margin-top: 0.5rem;
+}
+
+/* Productivity Tips */
+.productivity-tips {
+    background: var(--lighter);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.tips-carousel {
+    position: relative;
+    background: var(--light);
+    border-radius: 1rem;
+    height: 200px;
+    margin-top: 1.5rem;
+    overflow: hidden;
+    padding: 0 2rem;
+}
+
+.carousel-content {
+    height: 100%;
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    left: 0.5rem;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+}
+
+.nav-button {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--lighter);
+    border: 1px solid var(--border-dark);
+    color: var(--grey);
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-button:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: scale(1.05);
+}
+
+/* Dark mode adjustments */
+body.dark-mode .tips-carousel {
+    background: var(--dark-surface);
+}
+
+body.dark-mode .nav-button {
+    background: var(--dark-surface);
+    border-color: var(--border-dark);
+    color: var(--grey);
+}
+
+body.dark-mode .nav-button:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+} 
